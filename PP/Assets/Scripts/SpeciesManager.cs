@@ -230,7 +230,7 @@ public class SpeciesManager : MonoBehaviour
             }
             networks[i].rank = networks.Count-i;
         }
-        networks[popSize - 1].Save("Assets/Save.txt");//saves most effective network to file to preserve progress
+        //networks[popSize - 1].Save("Assets/Save.txt");//saves most effective network to file to preserve progress
         
         float k = networks[popSize - 1].fitness;
         bestFitChange = k - bestFit;

@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 429847098}
   - component: {fileID: 429847097}
   - component: {fileID: 429847096}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InGameGenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10523,7 +10523,7 @@ GameObject:
   - component: {fileID: 1649854309}
   - component: {fileID: 1649854308}
   - component: {fileID: 1649854306}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LivingPlanes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
