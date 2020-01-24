@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0, b: 0.007843138, a: 1}
+  m_Color: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2303,7 +2303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n: b
   num: 0
-  layers: 050000000300000002000000
+  layers: 050000000400000002000000
   botPrefab: {fileID: 3285771107418654957, guid: cf059dd71c8e34505bbfb0e1bf30d6bd,
     type: 3}
   popSize: 0
@@ -2665,7 +2665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n: c
   num: 0
-  layers: 050000000300000002000000
+  layers: 050000000500000002000000
   botPrefab: {fileID: 3285771107418654957, guid: cf059dd71c8e34505bbfb0e1bf30d6bd,
     type: 3}
   popSize: 0
@@ -3977,7 +3977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 21, y: -14}
+  m_AnchoredPosition: {x: 0, y: -14}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1017061845
@@ -11334,7 +11334,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869934636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.44672, y: 7.44672, z: 7.44672}
   m_Children:
@@ -11345,8 +11345,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 21, y: 9}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 0, y: 9.000034}
+  m_SizeDelta: {x: 162, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869934638
 MonoBehaviour:
@@ -11394,7 +11394,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.507
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11623,7 +11623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n: b
   num: 0
-  layers: 050000000300000002000000
+  layers: 050000000700000002000000
   botPrefab: {fileID: 3285771107418654957, guid: cf059dd71c8e34505bbfb0e1bf30d6bd,
     type: 3}
   popSize: 0
@@ -12396,7 +12396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n: d
   num: 0
-  layers: 050000000300000002000000
+  layers: 050000000600000002000000
   botPrefab: {fileID: 3285771107418654957, guid: cf059dd71c8e34505bbfb0e1bf30d6bd,
     type: 3}
   popSize: 0
