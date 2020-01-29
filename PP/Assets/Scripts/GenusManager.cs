@@ -60,7 +60,6 @@ public class GenusManager : MonoBehaviour
             if (i < managers.Length){
                 fitnessSigns[i].color = managers[i].goodMat.color;
             } else {
-                Debug.Log("removing");
                 fitnessSigns[i].gameObject.SetActive(false);
             }
         }
@@ -72,7 +71,6 @@ public class GenusManager : MonoBehaviour
         timeSlider.value = (Time.time-lastSpawnTime)/timeframe;
         botNumSign.text = "living bots:" + livingBots;
         botsSlider.value = (float)livingBots/(float)totalBots;
-        Debug.Log((float)livingBots/(float)totalBots);
 
         if ((CheckManagers()) || (Time.time-lastSpawnTime >= timeframe)){
             

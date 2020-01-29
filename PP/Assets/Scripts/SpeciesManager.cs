@@ -134,7 +134,6 @@ public class SpeciesManager : MonoBehaviour
             car.genNum = generationNumber;
             car.spawner = GetComponent<SpeciesManager>();
             car.epWeight = epWeight;
-            car.cpWeight = 1 - epWeight;
             car.mode = mode;
             
 

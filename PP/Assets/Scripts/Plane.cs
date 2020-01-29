@@ -13,7 +13,6 @@ public class Plane : BasicMove
     public float cp;
     [Range (0, 1)]
     public float epWeight;
-    public float cpWeight;
     public fitnessMode mode;
     public enum fitnessMode{
         xValue,
@@ -29,10 +28,13 @@ public class Plane : BasicMove
     Rigidbody2D rig;
     public RaycastHit2D[] hits;
     //public Transform chaser;
+    public ParticleSystem particle;
+    public int particlesToEmit;
 
 
-    [Space (20)]
-    public GameObject cam;
+
+    //[Space (20)]
+    //public GameObject cam;
 
     [Space (7)]
     [Header ("Plane Statistics")]
@@ -56,6 +58,14 @@ public class Plane : BasicMove
     
     void Start()
     {
+        if (GetComponentInChildren<ParticleSystem>() != null){
+            particle = GetComponentInChildren<ParticleSystem>();
+            
+            var main = particle.main;
+
+            main.startColor = new ParticleSystem.MinMaxGradient(spawner.goodMat.color, spawner.bestMat.color);
+        }
+
         hits = new RaycastHit2D[5];
         checkPoint = 0;
         self = gameObject.GetComponent<Rigidbody2D>();
@@ -162,10 +172,17 @@ public class Plane : BasicMove
     void Kill(){
         if (GetComponent<Rigidbody2D>() != null){
             Debug.Log("legally killing plane");
+            
             if (trail != null){
                 trail.time = 0;
             }
+
             Destroy(gameObject.GetComponent<Rigidbody2D>());
+            
+            if (particle != null && FindObjectOfType<GenusManager>().GetComponent<GenusManager>().demoMode){
+                particle.GetComponent<ParticleSystem>().Emit(particlesToEmit);
+            }
+            
             if (spawner != null){
                 spawner.livingBots--;
             }
