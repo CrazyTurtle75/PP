@@ -459,7 +459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &288569109
 Transform:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &434180124
 Transform:
   m_ObjectHideFlags: 0
@@ -10179,10 +10179,10 @@ MonoBehaviour:
   - {fileID: 1933611672}
   timeframe: 80
   gameSpeed: 5
-  demoMode: 0
+  demoMode: 1
   generationNumber: 0
   PC: 0
-  pcMAT: {fileID: 2100000, guid: 5d25015bca41d46ed9e522b29e0a2367, type: 2}
+  pcMAT: {fileID: 2100000, guid: 07fa7ef1fa5b4446d8c3d67d8ecae998, type: 2}
   livingBots: 0
   numText: {fileID: 1627884925113408033, guid: 6397fd487a7684462b5d3c764004283b, type: 3}
   numTextParent: {fileID: 1052176570}
@@ -12301,7 +12301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2043325457
 Transform:
   m_ObjectHideFlags: 0
@@ -12497,7 +12497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2073614612
 MonoBehaviour:
   m_ObjectHideFlags: 0

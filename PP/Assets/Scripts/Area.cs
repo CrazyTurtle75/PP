@@ -21,7 +21,6 @@ public class Area : MonoBehaviour
         SpeciesManager[] sm = FindObjectsOfType<SpeciesManager>();
         for (int i = 0; i < sm.Length; i++)
         {
-            Debug.Log("doing stuff");
             planes.AddRange(sm[i].cars);
         }
     }

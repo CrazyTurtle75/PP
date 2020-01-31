@@ -117,6 +117,9 @@ public class GenusManager : MonoBehaviour
         lastSpawnTime = Time.time;
         StartCoroutine("LateOnGenFinish");
         generationNumber++;
+        if (PC && b != null){
+            GameObject.Destroy(b.gameObject);
+        }
     }
 
     IEnumerator LateOnGenFinish (){
