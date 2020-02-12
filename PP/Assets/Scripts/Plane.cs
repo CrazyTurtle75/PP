@@ -29,7 +29,6 @@ public class Plane : BasicMove
     public RaycastHit2D[] hits;
     //public Transform chaser;
     public ParticleSystem particle;
-    public int particlesToEmit;
 
 
 
@@ -63,7 +62,7 @@ public class Plane : BasicMove
             
             var main = particle.main;
 
-            main.startColor = new ParticleSystem.MinMaxGradient(spawner.goodMat.color, spawner.bestMat.color);
+            main.startColor = new ParticleSystem.MinMaxGradient(spawner.particleColorA, spawner.particleColorB);
         }
 
         hits = new RaycastHit2D[5];
@@ -79,6 +78,11 @@ public class Plane : BasicMove
             useWind = spawner.useWind;
             reverseVariableInput = wind.reverseVariableInput;
         }
+    }
+
+    void Update(){
+        var main = particle.main;
+        //main.startSpeed;
     }
 
     void FixedUpdate(){
@@ -178,10 +182,6 @@ public class Plane : BasicMove
             }
 
             Destroy(gameObject.GetComponent<Rigidbody2D>());
-            
-            if (particle != null && FindObjectOfType<GenusManager>().GetComponent<GenusManager>().demoMode){
-                particle.GetComponent<ParticleSystem>().Emit(particlesToEmit);
-            }
             
             if (spawner != null){
                 spawner.livingBots--;

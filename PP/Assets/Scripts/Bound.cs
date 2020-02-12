@@ -36,7 +36,7 @@ public class Bound : MonoBehaviour
 
     void OnGenFinish(){
         if (type == btype.chaser){
-            transform.position = new Vector3(-7 - chaseDelay*chaseSpeed, 0, 8);
+            transform.position = new Vector3(-7f - chaseDelay*chaseSpeed, 0, 8);
         }
     }
 

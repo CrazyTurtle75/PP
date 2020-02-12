@@ -62,6 +62,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 58
       Script: {instanceID: 0}
+    - Class: 60
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 65
@@ -153,7 +155,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: 811d89622f5bb58e74d7a23ec2407b1b
+      Hash: c299e7e7b98dfe91e59a5155d48fa46f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GenusManager
@@ -585,7 +587,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: e842a1471470eb86e83549a0065e7734
+      Hash: abf2cc0d429405bb052fb85e22bfb3a1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Plane
@@ -663,7 +665,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: dce5170f9967789b0ddc84117bc42fbe
+      Hash: 63ad65b558445f535f1294bd66058fb8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpeciesManager
@@ -688,4 +690,4 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/aportland/Documents/GitHub/PPGit/PP/4.4.5 VERY FINAL Prototype.app
+  playerPath: /Users/aportland/Documents/GitHub/PPGit/PP/Builds/5.1.app

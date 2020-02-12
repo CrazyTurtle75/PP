@@ -11,6 +11,7 @@ public class GenusManager : MonoBehaviour
     // Start is called before the first frame update
     public SpeciesManager[] managers;
     public float timeframe;
+    public int maxGens;
     float lastSpawnTime;
     public event Action GenFinish;
     [Range(0.1f, 20f)] public float gameSpeed = 1f;
@@ -30,8 +31,11 @@ public class GenusManager : MonoBehaviour
     public TextMeshProUGUI genSign;
     public TextMeshProUGUI botNumSign;
     public Slider timeSlider;
-    public Slider botsSlider;
-    public TextMeshProUGUI[] fitnessSigns; 
+    public Slider genSlider;
+    public Slider botNumSlider;
+    public SpeciesManager[] m;
+    public TextMeshProUGUI[] topFitnessSigns;
+    public TextMeshProUGUI[] avgFitnessSigns;
     public CameraFollow cam;
     [Tooltip("The location of the generation UI text")]
     public Transform genLoc;
@@ -41,6 +45,8 @@ public class GenusManager : MonoBehaviour
 
 
     void Awake(){
+        generationNumber = 1;
+        UpdateUI();
         UpdateManagers();
         for (int i = 0; i < managers.Length; i++)
         {
@@ -53,15 +59,6 @@ public class GenusManager : MonoBehaviour
             f.name = "TextHolder" + letters[i];
             j.numToFollow = j.man.popSize-1;
             j.enabled = true;
-            totalBots += managers[i].popSize;
-        }
-        for (int i = 0; i < fitnessSigns.Length; i++)
-        {
-            if (i < managers.Length){
-                fitnessSigns[i].color = managers[i].goodMat.color;
-            } else {
-                fitnessSigns[i].gameObject.SetActive(false);
-            }
         }
     }
 
@@ -70,16 +67,19 @@ public class GenusManager : MonoBehaviour
         //bool check = b.GetComponent<Rigidbody2D>() == null;
         timeSlider.value = (Time.time-lastSpawnTime)/timeframe;
         botNumSign.text = "living bots:" + livingBots;
-        botsSlider.value = (float)livingBots/(float)totalBots;
+        botNumSlider.value = (float)livingBots/(float)totalBots;
 
         if ((CheckManagers()) || (Time.time-lastSpawnTime >= timeframe)){
-            
-            if (GenFinish != null){
+            if (generationNumber < maxGens || maxGens == 0){
+                if (GenFinish != null){
                 FinishGen();
+                } else {
+                    Debug.LogError("nobody subscribed to genfinish");
+                }
+                UpdateUI();
             } else {
-                Debug.LogError("nobody subscribed to genfinish");
+                Debug.Log("designated gens finished");
             }
-            UpdateUI();
         }
 
         Time.timeScale = gameSpeed;
@@ -93,12 +93,59 @@ public class GenusManager : MonoBehaviour
     }
 
     public void UpdateUI(){
-        genSign.text = "gen #"+generationNumber;
+        if (maxGens != 0){
+            genSlider.gameObject.SetActive(true);
+            genSlider.value = (float)generationNumber/(float)maxGens;
+            genSign.text = "gen #"+generationNumber + "/" + maxGens;
+        } else {
+            genSlider.gameObject.SetActive(false);
+            if (generationNumber <= 5){
+                genSign.text = "gen #"+generationNumber + "/∞";
+            } else {
+                genSign.text = "gen #"+generationNumber;
+            }
+            
+        }
+        
+        UpdateManagerRankingUI();
+    }
 
-        for (int i = 0; i < fitnessSigns.Length; i++)
+    public void UpdateManagerRankingUI(){
+        m = managers;
+
+        m = m.OrderBy(x => x.bestFit).Reverse().ToArray();
+        
+        for (int i = 0; i < topFitnessSigns.Length; i++)
         {
-            if (i < managers.Length){
-                fitnessSigns[i].text = Math.Round(managers[i].bestFit, 2).ToString();
+            if (i < m.Length){
+                topFitnessSigns[i].gameObject.SetActive(true);
+                topFitnessSigns[i].color = m[i].goodMat.color;
+            } else {
+                topFitnessSigns[i].gameObject.SetActive(false);
+            }
+        }
+        for (int i = 0; i < topFitnessSigns.Length; i++)
+        {
+            if (i < m.Length){
+                topFitnessSigns[i].text = Math.Round(m[i].bestFit, 2).ToString();
+            }
+        }
+
+        m = m.OrderBy(x => x.avgTopFit).Reverse().ToArray();
+
+        for (int i = 0; i < avgFitnessSigns.Length; i++)
+        {
+            if (i < m.Length){
+                avgFitnessSigns[i].gameObject.SetActive(true);
+                avgFitnessSigns[i].color = m[i].goodMat.color;
+            } else {
+                avgFitnessSigns[i].gameObject.SetActive(false);
+            }
+        }
+        for (int i = 0; i < avgFitnessSigns.Length; i++)
+        {
+            if (i < m.Length){
+                avgFitnessSigns[i].text = Math.Round(m[i].avgTopFit, 2).ToString();
             }
         }
     }
@@ -113,6 +160,14 @@ public class GenusManager : MonoBehaviour
     }
 
     void FinishGen(){
+        totalBots = 0;
+
+        for (int i = 0; i < managers.Length; i++)
+        {
+            totalBots += managers[i].popSize;
+        }
+        Debug.Log(totalBots);
+
         GenFinish();
         lastSpawnTime = Time.time;
         StartCoroutine("LateOnGenFinish");

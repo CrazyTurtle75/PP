@@ -14,6 +14,8 @@ public class SpeciesManager : MonoBehaviour
 
     public string n;
     public int num;
+    public string bestSavePath;
+    public string avgSavePath;
     [Header("Network Settings")]
     public int[] layers = new int[3] { 5, 3, 2 };
     public GameObject botPrefab;
@@ -35,6 +37,8 @@ public class SpeciesManager : MonoBehaviour
     public Material badMat;
     public Material textColor;
     public Color lineColor;
+    public Color particleColorA;
+    public Color particleColorB;
     Material[] goodMats;
 
     public List<NeuralNetwork> networks;
@@ -61,6 +65,9 @@ public class SpeciesManager : MonoBehaviour
         if (popSize % 2 != 0){
             popSize++;
         }
+
+        File.Create("Assets/Saves/" + bestSavePath).Close();
+        File.Create("Assets/Saves/" + avgSavePath).Close();
 
         FindObjectOfType<GenusManager>().GenFinish += OnGenFinish;
 
@@ -229,8 +236,8 @@ public class SpeciesManager : MonoBehaviour
             }
             networks[i].rank = networks.Count-i;
         }
-        //networks[popSize - 1].Save("Assets/Save.txt");//saves most effective network to file to preserve progress
-        
+        //networks[popSize - 1].Save("Assets/" + bestSavePath);//saves most effective network to file to preserve progress
+
         float k = networks[popSize - 1].fitness;
         bestFitChange = k - bestFit;
         bestFit = k;
@@ -240,6 +247,14 @@ public class SpeciesManager : MonoBehaviour
             networks[i] = networks[i + popSize/2].Copy(new NeuralNetwork(layers, networks[i].n));
             networks[i].Mutate((int)(1/mutationChance), mutationStrength);
         }
+
+        StreamWriter writer = new StreamWriter("Assets/Saves/" + bestSavePath, true);
+        writer.WriteLine(bestFit);
+        writer.Close();
+
+        StreamWriter writer1 = new StreamWriter("Assets/Saves/" + avgSavePath, true);
+        writer1.WriteLine(avgTopFit);
+        writer1.Close();
 
         generationNumber++;
     }

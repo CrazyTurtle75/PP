@@ -203,9 +203,6 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
             }
         }
         wrtier.Close();
-        StreamWriter writer = new StreamWriter("Assets/fitnessRanks.txt", true);
-        writer.WriteLine(fitness);
-        writer.Close();
     }
 
     public NeuralNetwork Copy(NeuralNetwork nn){
